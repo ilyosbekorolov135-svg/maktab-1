@@ -35,9 +35,18 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ isDarkMode = fal
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
-      const data = await res.json();
 
-      if (data.success) {
+      const text = await res.text();
+      let data: any = {};
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error('Non-JSON server response:', text);
+        setError(`Server xatosi (${res.status}). Qayta urinib ko'ring.`);
+        return;
+      }
+
+      if (res.ok && data.success) {
         setAdminToken(data.token);
         if (isStandaloneAdmin) {
           window.location.reload();
@@ -45,9 +54,10 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ isDarkMode = fal
           navigate('/admin/panel');
         }
       } else {
-        setError('Login yoki parol noto\'g\'ri!');
+        setError(data.message || 'Login yoki parol noto\'g\'ri!');
       }
-    } catch {
+    } catch (err: any) {
+      console.error('Login request failed:', err);
       setError('Server bilan aloqa yo\'q. Qayta urinib ko\'ring.');
     } finally {
       setIsLoading(false);
