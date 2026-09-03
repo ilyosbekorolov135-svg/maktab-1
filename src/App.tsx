@@ -21,7 +21,7 @@ import { SchoolDetailModal } from './components/SchoolDetailModal';
 import { SchoolCompareModal } from './components/SchoolCompareModal';
 import { Footer } from './components/Footer';
 import { AdminLoginPage } from './components/AdminLoginPage';
-import { ProtectedAdminRoute, clearAdminToken } from './components/ProtectedRoute';
+import { ProtectedAdminRoute, clearAdminToken, isAdminAuthenticated } from './components/ProtectedRoute';
 import { HonoredTeachersView } from './components/HonoredTeachersView';
 import { TalentedStudentsView } from './components/TalentedStudentsView';
 import { useSiteSettings } from './hooks/useSiteSettings';
@@ -755,9 +755,55 @@ export default function App() {
     );
   }
 
+  const isAdminDomain = typeof window !== 'undefined' && (
+    window.location.hostname.startsWith('admin') ||
+    window.location.hostname.includes('.admin.') ||
+    window.location.search.includes('mode=admin')
+  );
+
+  // Agar foydalanuvchi alohida Admin domeniga kirsa (masalan: admin-maktab-1.vercel.app yoki admin.maktab.uz)
+  if (isAdminDomain) {
+    return (
+      <Routes>
+        <Route path="/panel" element={
+          <ProtectedAdminRoute>
+            <AdminPanel 
+              onClose={() => {
+                clearAdminToken();
+                window.location.reload();
+              }}
+              isDarkMode={isDarkMode}
+              schools={schools}
+              setSchools={setSchools}
+              reviews={reviews}
+              setReviews={setReviews}
+            />
+          </ProtectedAdminRoute>
+        } />
+        <Route path="*" element={
+          isAdminAuthenticated() ? (
+            <AdminPanel 
+              onClose={() => {
+                clearAdminToken();
+                window.location.reload();
+              }}
+              isDarkMode={isDarkMode}
+              schools={schools}
+              setSchools={setSchools}
+              reviews={reviews}
+              setReviews={setReviews}
+            />
+          ) : (
+            <AdminLoginPage isDarkMode={isDarkMode} />
+          )
+        } />
+      </Routes>
+    );
+  }
+
   return (
     <Routes>
-      {/* Asosiy sayt */}
+      {/* Asosiy maktab sayti */}
       <Route path="/" element={
         <MainSite 
           schools={schools} 

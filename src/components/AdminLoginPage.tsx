@@ -14,6 +14,16 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ isDarkMode = fal
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const isStandaloneAdmin = typeof window !== 'undefined' && (
+    window.location.hostname.startsWith('admin') ||
+    window.location.hostname.includes('.admin.') ||
+    window.location.search.includes('mode=admin')
+  );
+
+  const mainPortalUrl = typeof window !== 'undefined'
+    ? `${window.location.protocol}//${window.location.hostname.replace(/^admin[-.]/, '')}${window.location.port ? ':' + window.location.port : ''}`
+    : '/';
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -29,7 +39,11 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ isDarkMode = fal
 
       if (data.success) {
         setAdminToken(data.token);
-        navigate('/admin/panel');
+        if (isStandaloneAdmin) {
+          window.location.reload();
+        } else {
+          navigate('/admin/panel');
+        }
       } else {
         setError('Login yoki parol noto\'g\'ri!');
       }
@@ -118,10 +132,10 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ isDarkMode = fal
 
         <div className="mt-6 text-center">
           <a
-            href="/"
+            href={isStandaloneAdmin ? mainPortalUrl : "/"}
             className="text-xs font-semibold text-slate-400 hover:text-blue-500 transition-colors"
           >
-            ← Asosiy saytga qaytish
+            ← Maktab rasmiy portaliga o'tish
           </a>
         </div>
       </div>
