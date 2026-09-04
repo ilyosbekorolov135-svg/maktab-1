@@ -681,7 +681,7 @@ function MainSite({ schools, setSchools, reviews, setReviews, isDarkMode, setIsD
 
       {/* Test rejimida bildirishnomasi */}
       <div 
-        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/85 dark:bg-slate-800/85 text-amber-400 border border-amber-500/30 text-[11px] sm:text-xs font-bold backdrop-blur-md shadow-xl select-none"
+        className="fixed bottom-16 sm:bottom-4 right-4 z-40 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/85 dark:bg-slate-800/85 text-amber-400 border border-amber-500/30 text-[11px] sm:text-xs font-bold backdrop-blur-md shadow-xl select-none"
         title="Sayt ayni paytda test rejimida faoliyat yuritmoqda"
       >
         <span className="relative flex h-2 w-2">

@@ -85,29 +85,29 @@ export const AngorSchoolView: React.FC<AngorSchoolViewProps> = ({
 
         {/* Top Badges & Actions */}
         <div className="absolute top-5 left-5 right-5 sm:top-8 sm:left-8 sm:right-8 flex justify-between items-start z-20">
-          <div className="flex flex-col sm:flex-row gap-2.5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-500/90 text-amber-950 font-black text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-md shadow-lg shadow-amber-500/20 border border-amber-400/50">
-              <Trophy className="w-3.5 h-3.5" />
-              {siteSettings?.heroBadge1 || "Surxondaryo #1 Tayanch Maktabi"}
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-amber-500/90 text-amber-950 font-black text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-md shadow-lg shadow-amber-500/20 border border-amber-400/50 whitespace-nowrap">
+              <Trophy className="w-3.5 h-3.5 shrink-0" />
+              {(siteSettings?.heroBadge1 && siteSettings.heroBadge1.length > 2) ? siteSettings.heroBadge1 : "Surxondaryo #1 Tayanch Maktabi"}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-white/10 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-md border border-white/20 shadow-lg">
-              <Award className="w-3.5 h-3.5 text-blue-300" />
-              {siteSettings?.heroBadge2 || "Vazir Jamg'armasi 100% Ustamasi"}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-white/10 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-md border border-white/20 shadow-lg whitespace-nowrap">
+              <Award className="w-3.5 h-3.5 text-blue-300 shrink-0" />
+              {(siteSettings?.heroBadge2 && siteSettings.heroBadge2.length > 2) ? siteSettings.heroBadge2 : "Vazir Jamg'armasi 100% Ustamasi"}
             </span>
           </div>
 
           <button
             onClick={handleShare}
-            className="p-2.5 sm:px-5 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-bold text-xs flex items-center gap-2 transition-all shadow-lg"
+            className="p-2.5 sm:px-5 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-lg shrink-0 ml-4"
           >
-            {copiedLink ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
+            {copiedLink ? <Check className="w-4 h-4 text-emerald-400 shrink-0" /> : <Share2 className="w-4 h-4 shrink-0" />}
             <span className="hidden sm:inline">{copiedLink ? 'Nusxalandi' : 'Ulashish'}</span>
           </button>
         </div>
 
         {/* Content Details Block */}
-        <div className="relative z-20 px-6 sm:px-10 pb-8 sm:pb-10 pt-20 w-full">
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
+        <div className="relative z-20 px-5 sm:px-10 pb-8 sm:pb-10 pt-32 sm:pt-28 lg:pt-20 w-full mt-auto">
+          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 sm:gap-8">
             
             {/* Logo & Headline */}
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 max-w-4xl">
