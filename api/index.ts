@@ -1,4 +1,4 @@
-﻿export default async function handler(req: any, res: any) {
+export default async function handler(req: any, res: any) {
   try {
     const module = await import('../server');
     const app = module.default || module.app;
