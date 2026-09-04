@@ -513,7 +513,7 @@ app.post('/api/upload', adminOnly, upload.single('image'), async (req, res) => {
   // ADMIN LOGIN
   app.post('/api/admin/login', (req, res) => {
     const { username, password } = req.body;
-    if (username === 'admin' && password === 'admin123') {
+    if (username === 'admin' && password === 'Ac_1554355') {
       res.json({ success: true, token: 'admin-token-123' });
     } else {
       res.status(401).json({ success: false, message: 'Xato login yoki parol' });
