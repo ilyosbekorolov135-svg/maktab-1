@@ -2,14 +2,15 @@ import React from 'react';
 import { 
   GraduationCap, Sparkles 
 } from 'lucide-react';
+import { SiteSettings } from '../hooks/useSiteSettings';
 
 interface FooterProps {
   isDarkMode: boolean;
   setActiveTab: (tab: string) => void;
-
+  siteSettings?: SiteSettings;
 }
 
-export const Footer: React.FC<FooterProps> = ({ isDarkMode, setActiveTab }) => {
+export const Footer: React.FC<FooterProps> = ({ isDarkMode, setActiveTab, siteSettings }) => {
   return (
     <footer className={`mt-16 relative ${
       isDarkMode ? 'bg-slate-950 text-slate-400' : 'bg-slate-900 text-slate-300'
@@ -24,43 +25,46 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode, setActiveTab }) => {
           
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-black">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center font-black shrink-0">
                 <GraduationCap className="w-4 h-4" />
               </div>
-              <span className="font-black text-base text-slate-900 dark:text-white">EduStats Maktablar</span>
+              <span className="font-black text-base text-slate-900 dark:text-white leading-tight">
+                {siteSettings?.footerAboutTitle || 'EduStats Maktablar'}
+              </span>
             </div>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-              O'zbekiston Respublikasi umumta'lim va ixtisoslashgan maktablarining milliy ochiq reyting va jamoatchilik fikri platformasi.
+              {siteSettings?.footerAboutText || 'O\'zbekiston Respublikasi umumta\'lim va ixtisoslashgan maktablarining milliy ochiq reyting va jamoatchilik fikri platformasi.'}
             </p>
           </div>
 
           <div>
             <h5 className="font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">Bo'limlar</h5>
             <ul className="space-y-2">
-              <li><button onClick={() => setActiveTab('angor-special')} className="hover:text-blue-600 font-bold text-amber-500">1-Maktab Asosiy</button></li>
-              <li><button onClick={() => setActiveTab('teachers')} className="hover:text-blue-600">Faxriy Ustozlar</button></li>
-              <li><button onClick={() => setActiveTab('schedule')} className="hover:text-blue-400 font-semibold text-blue-400">📅 Dars jadvali</button></li>
+              <li><button onClick={() => setActiveTab('angor-special')} className="hover:text-blue-600 font-bold text-amber-500">{siteSettings?.navMain || '1-Maktab Asosiy'}</button></li>
+              <li><button onClick={() => setActiveTab('teachers')} className="hover:text-blue-600">{siteSettings?.navTeachers || 'Faxriy Ustozlar'}</button></li>
+              <li><button onClick={() => setActiveTab('schedule')} className="hover:text-blue-400 font-semibold text-blue-400">📅 {siteSettings?.navSchedule || 'Dars jadvali'}</button></li>
               <li><button onClick={() => setActiveTab('quiz')} className="hover:text-blue-600">🧠 Test & Viktorina</button></li>
               <li><button onClick={() => setActiveTab('leaderboard')} className="hover:text-blue-600">Olimpiada reytingi</button></li>
-              <li><button onClick={() => setActiveTab('reviews')} className="hover:text-blue-600 font-semibold text-blue-500">💬 Fikr va takliflar</button></li>
+              <li><button onClick={() => setActiveTab('reviews')} className="hover:text-blue-600 font-semibold text-blue-500">💬 {siteSettings?.navReviews || 'Fikr va takliflar'}</button></li>
             </ul>
           </div>
 
-          <div>
-            <h5 className="font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">Angor 1-maktab Markazi</h5>
+          <div className="md:col-span-2 lg:col-span-1">
+            <h5 className="font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-3">
+              {siteSettings?.footerContactTitle || 'Angor 1-maktab Markazi'}
+            </h5>
             <p className="leading-relaxed text-slate-500 mb-2">
-              Surxondaryo viloyati, Angor tumani, Mustaqillik ko'chasi 12-uy.
+              {siteSettings?.footerContactAddress || 'Surxondaryo viloyati, Angor tumani, Mustaqillik ko\'chasi 12-uy.'}
             </p>
             <p className="font-semibold text-slate-700 dark:text-slate-300">
-              Zakovat va Al-Xorazmiy olimpiadasi tayanch maktabi.
+              {siteSettings?.footerContactDesc || 'Zakovat va Al-Xorazmiy olimpiadasi tayanch maktabi.'}
             </p>
           </div>
 
-
         </div>
 
-        <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] opacity-60">
-          <p>© {new Date().getFullYear()} EduStats Maktablar Portali. Barcha huquqlar himoyalangan.</p>
+        <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] opacity-60 text-center sm:text-left">
+          <p>{siteSettings?.footerCopyright || `© ${new Date().getFullYear()} EduStats Maktablar Portali. Barcha huquqlar himoyalangan.`}</p>
         </div>
       </div>
     </footer>

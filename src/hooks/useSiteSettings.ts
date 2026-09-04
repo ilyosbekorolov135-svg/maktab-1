@@ -14,6 +14,13 @@ export interface SiteSettings {
   navSchedule: string;
   navScheduleBadge: string;
   navReviews: string;
+  // Footer
+  footerAboutTitle: string;
+  footerAboutText: string;
+  footerContactTitle: string;
+  footerContactAddress: string;
+  footerContactDesc: string;
+  footerCopyright: string;
 }
 
 const DEFAULTS: SiteSettings = {
@@ -29,6 +36,12 @@ const DEFAULTS: SiteSettings = {
   navSchedule: "Dars Jadvali",
   navScheduleBadge: "2026",
   navReviews: "Fikr va Takliflar",
+  footerAboutTitle: "EduStats Maktablar",
+  footerAboutText: "O'zbekiston Respublikasi umumta'lim va ixtisoslashgan maktablarining milliy ochiq reyting va jamoatchilik fikri platformasi.",
+  footerContactTitle: "Angor 1-maktab Markazi",
+  footerContactAddress: "Surxondaryo viloyati, Angor tumani, Mustaqillik ko'chasi 12-uy.",
+  footerContactDesc: "Zakovat va Al-Xorazmiy olimpiadasi tayanch maktabi.",
+  footerCopyright: "© 2026 EduStats Maktablar Portali. Barcha huquqlar himoyalangan.",
 };
 
 export function useSiteSettings() {

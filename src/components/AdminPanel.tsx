@@ -229,6 +229,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     navSchedule: 'Dars Jadvali',
     navScheduleBadge: '2026',
     navReviews: 'Fikr va Takliflar',
+    // Footer settings
+    footerAboutTitle: 'EduStats Maktablar',
+    footerAboutText: "O'zbekiston Respublikasi umumta'lim va ixtisoslashgan maktablarining milliy ochiq reyting va jamoatchilik fikri platformasi.",
+    footerContactTitle: 'Angor 1-maktab Markazi',
+    footerContactAddress: "Surxondaryo viloyati, Angor tumani, Mustaqillik ko'chasi 12-uy.",
+    footerContactDesc: 'Zakovat va Al-Xorazmiy olimpiadasi tayanch maktabi.',
+    footerCopyright: '© 2026 EduStats Maktablar Portali. Barcha huquqlar himoyalangan.',
   });
   const [isUploadingHeaderLogo, setIsUploadingHeaderLogo] = useState<boolean>(false);
   const [isSavingSettings, setIsSavingSettings] = useState<boolean>(false);
@@ -1388,6 +1395,80 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                           }`}
                         />
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Card 4: Footer Matnlari */}
+                  <div className={`p-6 sm:p-8 rounded-3xl border space-y-5 ${
+                    isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'
+                  }`}>
+                    <div className="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+                      <Layout className="w-5 h-5 text-indigo-500" />
+                      <div>
+                        <h3 className="font-bold text-sm">Footer (Saytning eng pastki qismi)</h3>
+                        <p className="text-xs text-slate-400">Pastki qismdagi yozuvlar, ma'lumotlar va huquqiy matnlarni o'zgartirish</p>
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">Chap ustun: Sarlavha</label>
+                          <input
+                            type="text"
+                            value={siteSettingsForm.footerAboutTitle}
+                            onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerAboutTitle: e.target.value })}
+                            className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">Chap ustun: Matn</label>
+                          <textarea
+                            value={siteSettingsForm.footerAboutText}
+                            onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerAboutText: e.target.value })}
+                            className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none min-h-[80px] resize-y ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">O'ng ustun: Manzil Sarlavhasi</label>
+                          <input
+                            type="text"
+                            value={siteSettingsForm.footerContactTitle}
+                            onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerContactTitle: e.target.value })}
+                            className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">O'ng ustun: Manzil matni</label>
+                          <textarea
+                            value={siteSettingsForm.footerContactAddress}
+                            onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerContactAddress: e.target.value })}
+                            className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none min-h-[40px] resize-y ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">O'ng ustun: Qo'shimcha matn</label>
+                          <input
+                            type="text"
+                            value={siteSettingsForm.footerContactDesc}
+                            onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerContactDesc: e.target.value })}
+                            className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">Eng pastki qism (Copyright) matni</label>
+                      <input
+                        type="text"
+                        value={siteSettingsForm.footerCopyright}
+                        onChange={e => setSiteSettingsForm({ ...siteSettingsForm, footerCopyright: e.target.value })}
+                        className={`w-full px-4 py-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-slate-50 border-slate-200'}`}
+                      />
                     </div>
                   </div>
 
