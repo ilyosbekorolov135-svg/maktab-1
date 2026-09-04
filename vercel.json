@@ -11,11 +11,11 @@
   "functions": {
     "api/index.ts": {
       "maxDuration": 30,
-      "includeFiles": "node_modules/.prisma/client/**,prisma/schema.prisma"
+      "includeFiles": ["node_modules/.prisma/client/**", "prisma/schema.prisma"]
     },
     "api/[...path].ts": {
       "maxDuration": 30,
-      "includeFiles": "node_modules/.prisma/client/**,prisma/schema.prisma"
+      "includeFiles": ["node_modules/.prisma/client/**", "prisma/schema.prisma"]
     }
   }
 }
