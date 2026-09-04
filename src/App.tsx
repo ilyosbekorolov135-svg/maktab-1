@@ -677,6 +677,7 @@ function MainSite({ schools, setSchools, reviews, setReviews, isDarkMode, setIsD
       <Footer 
         isDarkMode={isDarkMode} 
         setActiveTab={setActiveTab} 
+        siteSettings={siteSettings}
       />
 
       {/* Test rejimida bildirishnomasi */}
