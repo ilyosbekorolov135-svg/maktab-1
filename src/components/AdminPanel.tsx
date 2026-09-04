@@ -662,32 +662,32 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       </div>
 
       {/* Main Admin Body */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar */}
-        <div className={`w-64 border-r p-4 shrink-0 flex flex-col gap-2 ${
+      <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
+        {/* Sidebar / Top Navigation on Mobile */}
+        <div className={`w-full lg:w-64 border-b lg:border-r lg:border-b-0 p-2 lg:p-4 shrink-0 flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar ${
           isDarkMode ? 'border-slate-800 bg-slate-900/60' : 'border-slate-200 bg-white'
         }`}>
           <button 
             onClick={() => setActiveTab('dashboard')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all ${
               activeTab === 'dashboard'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <BarChart3 className="w-4 h-4" />
+            <BarChart3 className="w-4 h-4 shrink-0" />
             Umumiy Dashboard
           </button>
 
           <button 
             onClick={() => setActiveTab('schools')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all ${
               activeTab === 'schools'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <SchoolIcon className="w-4 h-4" />
+            <SchoolIcon className="w-4 h-4 shrink-0" />
             Maktablar Ro'yxati
             <span className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold ${
               activeTab === 'schools' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
@@ -698,13 +698,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
           <button 
             onClick={() => setActiveTab('teachers')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all ${
               activeTab === 'teachers'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <Award className="w-4 h-4" />
+            <Award className="w-4 h-4 shrink-0" />
             Faxriy Ustozlar
             <span className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold ${
               activeTab === 'teachers' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
@@ -715,13 +715,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
           <button 
             onClick={() => setActiveTab('students')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all ${
               activeTab === 'students'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <Star className="w-4 h-4" />
+            <Star className="w-4 h-4 shrink-0" />
             Iqtidorli O'quvchilar
             <span className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold ${
               activeTab === 'students' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
@@ -732,13 +732,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
           <button 
             onClick={() => setActiveTab('reviews')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all ${
               activeTab === 'reviews'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <MessageSquare className="w-4 h-4" />
+            <MessageSquare className="w-4 h-4 shrink-0" />
             Fikrlar va Baholar
             <span className={`ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold ${
               activeTab === 'reviews' ? 'bg-white/20 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
@@ -749,13 +749,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
           <button 
             onClick={() => setActiveTab('settings')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+            className={`whitespace-nowrap lg:w-full flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl font-bold text-xs lg:text-sm transition-all lg:mt-auto ${
               activeTab === 'settings'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20' 
                 : (isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900')
             }`}
           >
-            <Settings className="w-4 h-4" />
+            <Settings className="w-4 h-4 shrink-0" />
             Sayt Sozlamalari
           </button>
 
