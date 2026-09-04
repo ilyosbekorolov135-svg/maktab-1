@@ -1413,15 +1413,16 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       {/* Modal: Add or Edit School */}
       {isSchoolModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className={`w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border my-8 ${
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className={`w-full max-w-lg rounded-3xl shadow-2xl border max-h-[90vh] flex flex-col ${
             isDarkMode ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
           }`}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-black">
+            <div className="flex justify-between items-center p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 shrink-0">
+              <h3 className="text-lg sm:text-xl font-black">
                 {editingSchoolId ? 'Maktabni Tahrirlash' : 'Yangi Maktab Qo\'shish'}
               </h3>
               <button 
+                type="button"
                 onClick={() => setIsSchoolModalOpen(false)}
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
               >
@@ -1429,7 +1430,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </button>
             </div>
 
-            <form onSubmit={handleSaveSchool} className="space-y-4">
+            <form onSubmit={handleSaveSchool} className="p-5 sm:p-6 overflow-y-auto space-y-4">
               <div>
                 <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">Maktab Qisqa Nomi</label>
                 <input 
@@ -1644,18 +1645,18 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       {/* Student Modal */}
       {isStudentModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className={"w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border my-8 " + (isDarkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900')}>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-black">
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className={`w-full max-w-lg rounded-3xl shadow-2xl border max-h-[90vh] flex flex-col ${isDarkMode ? 'bg-slate-900 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900'}`}>
+            <div className="flex justify-between items-center p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 shrink-0">
+              <h2 className="text-lg sm:text-xl font-black">
                 {editingStudentId ? 'O\'quvchini Tahrirlash' : 'Yangi O\'quvchi Qo\'shish'}
               </h2>
-              <button onClick={() => setIsStudentModalOpen(false)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+              <button type="button" onClick={() => setIsStudentModalOpen(false)} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSaveStudent} className="space-y-4">
+            <form onSubmit={handleSaveStudent} className="p-5 sm:p-6 overflow-y-auto space-y-4">
               <div>
                 <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">O'quvchi Ism Sharifi</label>
                 <input type="text" value={studentFormData.name} onChange={e => setStudentFormData({...studentFormData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl border bg-transparent font-medium" placeholder="Masalan: To'xtayev Sardor" required />
@@ -1713,16 +1714,17 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
       {/* Modal: Add or Edit Teacher */}
       {isTeacherModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className={`w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border my-8 ${
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className={`w-full max-w-lg rounded-3xl shadow-2xl border max-h-[90vh] flex flex-col ${
             isDarkMode ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
           }`}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-black flex items-center gap-2">
+            <div className="flex justify-between items-center p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 shrink-0">
+              <h3 className="text-lg sm:text-xl font-black flex items-center gap-2">
                 <Award className="w-5 h-5 text-amber-500" />
-                {editingTeacherId ? 'Ustoz Ma\'lumotlarini Tahrirlash' : 'Yangi Faxriy Ustoz Qo\'shish'}
+                {editingTeacherId ? 'Ustozni Tahrirlash' : 'Yangi Ustoz Qo\'shish'}
               </h3>
               <button 
+                type="button"
                 onClick={() => setIsTeacherModalOpen(false)}
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
               >
@@ -1730,7 +1732,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               </button>
             </div>
 
-            <form onSubmit={handleSaveTeacher} className="space-y-4">
+            <form onSubmit={handleSaveTeacher} className="p-5 sm:p-6 overflow-y-auto space-y-4">
               <div>
                 <label className="block text-xs font-bold mb-1.5 uppercase text-slate-400">Ustoz F.I.SH (Ism Sharif)</label>
                 <input 
