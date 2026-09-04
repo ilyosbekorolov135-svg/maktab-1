@@ -1,4 +1,4 @@
-﻿{
+{
   "buildCommand": "npx prisma generate && vite build",
   "outputDirectory": "dist",
   "framework": "vite",
