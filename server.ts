@@ -4,7 +4,7 @@ import path from 'path';
 import { PrismaClient } from '@prisma/client';
 import multer from 'multer';
 import fs from 'fs';
-import { uploadFileToStorage } from './src/lib/supabaseAdmin';
+import { uploadFileToStorage } from './src/lib/supabaseAdmin.js';
 
 const __dirname = process.cwd();
 
@@ -95,7 +95,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rasm yuklash uchun multer sozlamalari — xotira buferi (Supabase Storage ga yuklash uchun)
+// Rasm yuklash uchun multer sozlamalari вЂ” xotira buferi (Supabase Storage ga yuklash uchun)
 const storage = multer.memoryStorage();
 const upload = multer({ storage, limits: { fileSize: 50 * 1024 * 1024 } }); // 50MB limit
 
@@ -128,13 +128,13 @@ const adminOnly = (req: express.Request, res: express.Response, next: express.Ne
   next();
 };
 
-// Rasm/Video yuklash API'si — Supabase Storage ga yuklaydi
+// Rasm/Video yuklash API'si вЂ” Supabase Storage ga yuklaydi
 app.post('/api/upload', adminOnly, upload.single('image'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'Fayl yuklanmadi' });
   }
 
-  // Supabase Storage sozlangan bo'lsa — CDN URL qaytaradi
+  // Supabase Storage sozlangan bo'lsa вЂ” CDN URL qaytaradi
   if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_KEY) {
     try {
       const publicUrl = await uploadFileToStorage(
