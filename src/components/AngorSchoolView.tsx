@@ -106,46 +106,50 @@ export const AngorSchoolView: React.FC<AngorSchoolViewProps> = ({
         </div>
 
         {/* Content Details Block */}
-        <div className="relative z-20 px-5 sm:px-10 pb-8 sm:pb-10 pt-32 sm:pt-28 lg:pt-20 w-full mt-auto">
+        <div className="relative z-20 px-5 sm:px-10 pb-6 sm:pb-10 pt-36 sm:pt-28 lg:pt-20 w-full mt-auto">
           <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 sm:gap-8">
             
             {/* Logo & Headline */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 max-w-4xl">
+            <div className="flex flex-row items-center sm:items-end gap-4 sm:gap-6 max-w-4xl">
               {/* Official School Emblem */}
               <div className="relative group shrink-0">
                 <SchoolEmblem
                   schoolName={school.name}
                   type={school.type}
                   logoImage={school.logoImage}
-                  size="xl"
+                  size="lg"
                   showRays={true}
                 />
               </div>
               
               {/* Text Info */}
               <div className="flex-1 pb-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                  <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
                     {school.name}
                   </h1>
-                  <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 text-blue-400 shrink-0 drop-shadow-md" />
+                  <CheckCircle2 className="w-5 h-5 sm:w-8 sm:h-8 text-blue-400 shrink-0 drop-shadow-md" />
                 </div>
                 
-                <p className="text-sm sm:text-base text-slate-300 font-medium leading-relaxed mb-4 sm:mb-5 max-w-2xl">
+                <p className="text-xs sm:text-base text-slate-300 font-medium leading-relaxed mb-3 sm:mb-5 max-w-2xl hidden sm:block">
                   {school.fullName}
                 </p>
+                <p className="text-[11px] sm:hidden text-slate-300 font-medium leading-snug mb-3">
+                  Surxondaryo viloyati Angor tumani 1-sonli umumiy o'rta ta'lim maktabi
+                </p>
                 
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-slate-200 flex-wrap">
-                  <span className="flex items-center gap-2 font-semibold bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
-                    <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
-                    {school.address}
+                <div className="flex flex-row flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-sm text-slate-200">
+                  <span className="flex items-center gap-1.5 font-semibold bg-slate-800/60 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 shrink-0" />
+                    <span className="hidden sm:inline">{school.address}</span>
+                    <span className="sm:hidden">Angor t, Mustaqillik ko'ch, 12-uy</span>
                   </span>
-                  <span className="flex items-center gap-2 font-semibold bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
-                    <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
-                    {school.establishedYear}-yilda tashkil etilgan
+                  <span className="flex items-center gap-1.5 font-semibold bg-slate-800/60 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
+                    {school.establishedYear}<span className="hidden sm:inline">-yilda tashkil etilgan</span>
                   </span>
-                  <span className="flex items-center gap-2 font-semibold bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
-                    <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span className="flex items-center gap-1.5 font-semibold bg-slate-800/60 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border border-slate-700/50 backdrop-blur-sm shadow-sm">
+                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
                     {school.phone}
                   </span>
                 </div>

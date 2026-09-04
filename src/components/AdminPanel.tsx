@@ -664,7 +664,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       {/* Main Admin Body */}
       <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         {/* Sidebar / Top Navigation on Mobile */}
-        <div className={`w-full lg:w-64 border-b lg:border-r lg:border-b-0 p-2 lg:p-4 shrink-0 flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar ${
+        <div className={`w-full lg:w-64 border-b lg:border-r lg:border-b-0 p-2 lg:p-4 shrink-0 flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar items-center lg:items-stretch ${
           isDarkMode ? 'border-slate-800 bg-slate-900/60' : 'border-slate-200 bg-white'
         }`}>
           <button 
